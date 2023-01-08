@@ -1,0 +1,4 @@
+configMapGenerator:
+- name: local-game-config
+  files:
+  - local-config.yaml
