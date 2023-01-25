@@ -29,12 +29,12 @@ jobs:
       - name: Build backend and push
         uses: docker/build-push-action@v3
         with:
-          context: k8s-practice/demo-app/kubernetes-example/backend
+          context: k8s-practice/demo-app/kubernetes-example/backend/
           push: true
           tags: ${{ env.DOCKERHUB_USERNAME }}/backend:${{ steps.vars.outputs.sha_short }}
       - name: Build frontend and push
         uses: docker/build-push-action@v3
         with:
-          context: k8s-practice/demo-app/kubernetes-example/frontend
+          context: k8s-practice/demo-app/kubernetes-example/frontend/
           push: true
           tags: ${{ env.DOCKERHUB_USERNAME }}/frontend:${{ steps.vars.outputs.sha_short }}
