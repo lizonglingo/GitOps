@@ -1,0 +1,15 @@
+kind: PersistentVolumeClaim
+apiVersion: v1
+metadata:
+  name: test-claim
+  namespace: todocoder
+  ## annotations:
+    ## volume.beta.kubernetes.io/storage-class: "managed-nfs-storage"  # 后期k8s不再支持这个注解，通过声明storageClassName的方式代替
+spec:
+  accessModes:
+    - ReadWriteMany
+  storageClassName: default #与nfs-StorageClass.yaml metadata.name保持一致
+  resources:
+    requests:
+      storage: 5Mi
+
