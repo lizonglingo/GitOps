@@ -27,14 +27,16 @@ jobs:
           username: ${{ env.DOCKERHUB_USERNAME }}
           password: ${{ secrets.DOCKERHUB_TOKEN }}
       - name: Build backend and push
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v4
         with:
           context: k8s-practice/demo-app/kubernetes-example/backend
+          platforms: linux/amd64,linux/arm64
           push: true
           tags: ${{ env.DOCKERHUB_USERNAME }}/backend:${{ steps.vars.outputs.sha_short }}
       - name: Build frontend and push
-        uses: docker/build-push-action@v3
+        uses: docker/build-push-action@v4
         with:
           context: k8s-practice/demo-app/kubernetes-example/frontend
+          platforms: linux/amd64,linux/arm64
           push: true
           tags: ${{ env.DOCKERHUB_USERNAME }}/frontend:${{ steps.vars.outputs.sha_short }}
